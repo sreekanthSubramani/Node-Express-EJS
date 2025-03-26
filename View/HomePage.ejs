@@ -1,0 +1,29 @@
+<%- include('../View/includes/Header.ejs') %>
+<link rel="stylesheet" href="/Ejs.css">
+<%- include('../View/includes/Nav.ejs') %>
+
+
+<% if (allProds.length > 0) { %>
+    <div class="main-picture-board">
+    <% allProds.forEach(elem => { %>
+        <div class="grid-item">
+            <h3><%= elem.title %></h3>
+            <img src="<%= elem.image %>" alt="<%= elem.title %>" class="ejs-images"/>
+            <p><%- elem.description %></p>
+            <h3><%= elem.price %></h3>
+            
+            <form action="/cart" method="POST">
+            <button>Add to Cart</button>
+            <input type="hidden" value="<%= elem.id %>" name="productId">
+            </form>
+        </div>
+    <% }) %>
+
+</div>
+<% } else { %>
+    <h3>No Products as of Now!</h3>
+<% } %>
+
+
+
+<%- include('../View/includes/Footer.ejs') %>

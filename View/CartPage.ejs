@@ -1,0 +1,49 @@
+<%- include('../View/includes/Header.ejs') %>
+<link rel="stylesheet" href="/Cart.css">
+<script src="/orderConfirmer.js" defer></script>
+<%- include('../View/includes/Nav.ejs') %>
+
+
+<% if (allProds?.length > 0) { %>
+    <div style="width: 100dvw; height: 20dvh;">
+        <div style="display: flex; justify-self: center; align-self: center; margin-top: 50px;">
+    <h1 class="orderplacer"> Cart Page </h1>
+        </div>
+    </div>
+
+    <div class="all-prod-cart">
+    <% allProds?.forEach(elem => { %>
+        <div class="inside-cart-prod">
+           
+            <div style="width:  90px;">
+            <h3><%= elem.title %></h3>
+            </div>
+            <h3> x </h3>
+            <div style="width:  90px;">
+            <h3><%= elem.quantity %></h3>
+           </div>
+           <h3> =  </h3>
+           <div style="width:  90px;">
+            <h3>₹ <%= elem.price %></h3>
+           </div>
+
+        </div>
+    <% }) %>
+    <div style="display: flex; justify-content: center; align-items: center; margin-top: 40px;">
+    <h3> Your Total : ₹<%= totals %></h3>  
+    </div>
+
+    <div class="cartBtn">
+    <form action="/cartItems" method="POST">
+        <button type="button"  onclick="purchaseBtn()" class="btn-cls"> Puchase </button>
+        </form>
+    </div>
+
+</div>
+<% } else { %>
+    <h3>No Products as of Now!</h3>
+<% } %>
+
+
+
+<%- include('../View/includes/Footer.ejs') %>

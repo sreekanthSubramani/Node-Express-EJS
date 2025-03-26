@@ -1,0 +1,13 @@
+.form-Class{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 50px;
+}
+
+input{
+    width: 200px;
+    height: 20px;
+}
